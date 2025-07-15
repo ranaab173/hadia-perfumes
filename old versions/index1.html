@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadia Perfumes - Coming Soon</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the background and font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0); /* Light gradient background */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Prevent scroll */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white background */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 95%;
+            padding: 2rem;
+            border-radius: 1.5rem; /* More rounded corners */
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .countdown-item {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 0.75rem; /* Rounded corners for countdown items */
+            padding: 1rem 0.5rem;
+            margin: 0.5rem;
+            flex: 1;
+            min-width: 80px; /* Ensure minimum width for smaller screens */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #b8860b; /* Dark goldenrod for numbers */
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            .countdown-number {
+                font-size: 2rem;
+            }
+            .countdown-item {
+                padding: 0.75rem 0.25rem;
+                margin: 0.25rem;
+                min-width: 60px;
+            }
+            h1 {
+                font-size: 2.5rem !important; /* Tailwind's text-5xl is 3rem, adjust for mobile */
+            }
+            h2 {
+                font-size: 1.25rem !important;
+            }
+            p {
+                font-size: 0.9rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+            .countdown-label {
+                font-size: 0.75rem;
+            }
+            .countdown-item {
+                min-width: 50px;
+            }
+            h1 {
+                font-size: 2rem !important;
+            }
+            h2 {
+                font-size: 1rem !important;
+            }
+            p {
+                font-size: 0.8rem !important;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container flex flex-col items-center justify-center">
+        <h1 class="text-5xl md:text-6xl font-bold text-neutral-800 mb-4 tracking-tight">
+            Hadia Perfumes
+        </h1>
+        <h2 class="text-xl md:text-2xl text-neutral-600 mb-8 italic">
+            "A scent that lingers, a memory that stays."
+        </h2>
+
+        <p class="text-lg md:text-xl text-neutral-700 mb-10 leading-relaxed max-w-2xl">
+            Prepare to experience a new realm of luxury. Hadia Perfumes is crafting exquisite
+            fragrances designed to captivate and inspire. Our full collection
+            launches soon.
+        </p>
+
+        <div class="text-2xl md:text-3xl font-semibold text-neutral-800 mb-6">
+            Launching August 14, 2025
+        </div>
+
+        <div id="countdown" class="flex justify-center flex-wrap gap-4 mb-10 w-full">
+            <div class="countdown-item">
+                <span id="days" class="countdown-number">00</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-item">
+                <span id="hours" class="countdown-number">00</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+                <span id="minutes" class="countdown-number">00</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+                <span id="seconds" class="countdown-number">00</span>
+                <span class="countdown-label">Seconds</span>
+            </div>
+        </div>
+
+        <p class="text-lg md:text-xl text-neutral-700 mb-6">
+            Be the first to know when we launch!
+        </p>
+
+        <!-- Optional: A simple placeholder for email signup if desired later -->
+        <div class="flex flex-col sm:flex-row items-center justify-center w-full max-w-md">
+            <input
+                type="email"
+                placeholder="Enter your email"
+                class="w-full sm:w-auto flex-grow p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 mb-4 sm:mb-0 sm:mr-4 text-neutral-700"
+                style="border-radius: 0.75rem;"
+            />
+            <button
+                class="w-full sm:w-auto bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-lg"
+                style="border-radius: 0.75rem;"
+            >
+                Notify Me
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Set the date we're counting down to (August 14, 2025, 00:00:00)
+        const countDownDate = new Date("Aug 14, 2025 00:00:00").getTime();
+
+        // Update the countdown every 1 second
+        const x = setInterval(function() {
+
+            // Get today's date and time
+            const now = new Date().getTime();
+
+            // Find the distance between now and the countdown date
+            const distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the respective elements
+            document.getElementById("days").innerHTML = String(days).padStart(2, '0');
+            document.getElementById("hours").innerHTML = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
+
+            // If the countdown is over, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "<div class='text-2xl font-bold text-amber-600'>We are LIVE! Explore our collection now.</div>";
+                document.querySelector('.text-2xl.md\\:text-3xl.font-semibold.text-neutral-800.mb-6').style.display = 'none'; // Hide "Launching August 14, 2025"
+                document.querySelector('.flex.flex-col.sm\\:flex-row.items-center.justify-center.w-full.max-w-md').style.display = 'none'; // Hide email signup
+            }
+        }, 1000);
+
+        // Ensure the countdown updates immediately on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Manually trigger the update once to avoid initial 00s display
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+            if (distance >= 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerHTML = String(days).padStart(2, '0');
+                document.getElementById("hours").innerHTML = String(hours).padStart(2, '0');
+                document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
+                document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadia Perfumes - Coming Soon</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom CSS for luxury and glassmorphism effects */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); /* Deep, luxurious gradient */
+            color: #e0e0e0; /* Light text for dark background */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Neon glow effect for buttons and inputs */
+        .neon-glow-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 15px #a855f7; /* Purple glow */
+        }
+        .neon-glow-button:hover {
+            box-shadow: 0 0 8px #c084fc, 0 0 15px #c084fc, 0 0 25px #c084fc;
+            transform: translateY(-2px);
+        }
+
+        .neon-glow-input:focus {
+            outline: none;
+            border-color: #a855f7; /* Purple border on focus */
+            box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.5); /* Purple glow on focus */
+        }
+
+        /* Glassmorphism effect */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.08); /* Slightly visible white with low opacity */
+            backdrop-filter: blur(10px); /* Blur behind the element */
+            -webkit-backdrop-filter: blur(10px); /* Safari support */
+            border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle border */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Soft shadow */
+        }
+
+        /* Header specific styles */
+        .header-glass-effect {
+            background: rgba(0, 0, 0, 0.2); /* Almost transparent black */
+            backdrop-filter: blur(5px); /* Subtle blur for glass effect */
+            -webkit-backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle bottom border */
+        }
+
+        /* Header animation (kept for potential future use or subtle background movement) */
+        .header-bg-animation {
+            background-size: 200% 200%;
+            animation: gradient-animation 10s ease infinite;
+        }
+
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Countdown specific styling */
+        .countdown-item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            margin: 0 10px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            /* Enhanced neon glow for numbers */
+            text-shadow: 0 0 15px #ff00ff, 0 0 25px #ff00ff, 0 0 40px #ff00ff; /* Saturated magenta glow */
+            background: rgba(255, 255, 255, 0.08); /* Slightly more visible glass effect */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px; /* More rounded corners */
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 0, 255, 0.6); /* Stronger shadow and magenta glow */
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-8px) scale(1.1); /* More pronounced hover effect */
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 0, 255, 0.8);
+        }
+
+        .countdown-item span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #e0e0e0; /* Slightly brighter label */
+            margin-top: 5px;
+        }
+
+        /* Responsive adjustments for countdown */
+        @media (max-width: 768px) {
+            .countdown-item {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+                margin: 0 5px;
+            }
+            .countdown-item span {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .countdown-item {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                margin: 0 3px;
+            }
+            .countdown-item span {
+                font-size: 0.7rem;
+            }
+        }
+
+        /* Image overlay for hero section */
+        .hero-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+            z-index: 1;
+        }
+
+        /* Ensure images fill their container and are responsive */
+        .responsive-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        /* Custom scrollbar for aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4a007a;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6a00a8;
+        }
+
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header Section -->
+    <header class="sticky top-0 z-50 w-full py-4 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between shadow-lg header-glass-effect">
+        <!-- Logo -->
+        <div class="text-3xl font-bold tracking-wider mb-4 md:mb-0 drop-shadow-md">
+            <span class="text-purple-300">Hadia</span><span class="text-white"> Perfumes</span>
+        </div>
+
+        <!-- Navigation/About Us -->
+        <nav class="flex-grow text-center mb-4 md:mb-0">
+            <a href="#about" class="text-white text-lg font-medium hover:text-purple-300 transition duration-300 px-4 py-2 rounded-md relative group">
+                About Us
+                <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-purple-300 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+            </a>
+        </nav>
+
+        <!-- Social Icons -->
+        <div class="flex space-x-3 text-purple-300 text-xl">
+            <a href="#" class="hover:text-white transition duration-300"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="hover:text-white transition duration-300"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-white transition duration-300"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="hover:text-white transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center justify-center py-16 px-4 md:px-8 overflow-hidden">
+            <!-- Background Image -->
+            <img src="https://images.unsplash.com/photo-1617943539287-d6fe110ac7ad?q=80&w=2277&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                 alt="Luxury Perfume Background"
+                 class="absolute inset-0 w-full h-full object-cover z-0 opacity-70">
+            <div class="hero-image-overlay z-10"></div>
+
+            <div class="relative z-20 flex flex-col lg:flex-row items-stretch justify-center gap-12 max-w-7xl mx-auto">
+                <!-- Left Container: Heading, Subheading, Description, Newsletter -->
+                <div class="lg:w-1/2 text-center lg:text-left p-6 bg-black bg-opacity-40 rounded-lg shadow-xl glass-effect">
+                    <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-4 drop-shadow-lg">
+                        Hadia Perfumes
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-purple-300 mb-6 drop-shadow-md">
+                        A scent that lingers, a memory that stays.
+                    </h2>
+                    <p class="text-lg text-gray-200 mb-8 max-w-md mx-auto lg:mx-0">
+                        Experience the essence of luxury. Hadia Perfumes brings you an exquisite collection crafted for the discerning individual. Prepare to embark on a sensory journey unlike any other.
+                    </p>
+
+                    <!-- Newsletter Form -->
+                    <div class="mt-8">
+                        <h3 class="text-xl font-semibold text-white mb-4">Be the first to know!</h3>
+                        <form id="newsletterForm" class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <input type="email" placeholder="Your Email Address" required
+                                   class="flex-grow p-3 rounded-md bg-white bg-opacity-10 border border-purple-400 text-white placeholder-gray-300 focus:ring-2 focus:ring-purple-500 neon-glow-input">
+                            <button type="submit"
+                                    class="bg-purple-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-purple-800 transition duration-300 neon-glow-button">
+                                Subscribe
+                            </button>
+                        </form>
+                        <p id="newsletterMessage" class="mt-4 text-green-400 font-medium hidden"></p>
+                    </div>
+                </div>
+
+                <!-- Right Container: Contact Form with Glassmorphism -->
+                <div class="lg:w-1/2 p-8 glass-effect transform transition-transform duration-500 hover:scale-[1.02]">
+                    <h3 class="text-3xl font-bold text-white mb-6 text-center">Get in Touch</h3>
+                    <form id="contactForm" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-white text-sm font-medium mb-2">Name</label>
+                            <input type="text" id="name" placeholder="Your Name" required
+                                   class="w-full p-3 rounded-md bg-white bg-opacity-10 border border-purple-400 text-white placeholder-gray-300 focus:ring-2 focus:ring-purple-500 neon-glow-input">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-white text-sm font-medium mb-2">Email</label>
+                            <input type="email" id="email" placeholder="Your Email" required
+                                   class="w-full p-3 rounded-md bg-white bg-opacity-10 border border-purple-400 text-white placeholder-gray-300 focus:ring-2 focus:ring-purple-500 neon-glow-input">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-white text-sm font-medium mb-2">Message</label>
+                            <textarea id="message" rows="4" placeholder="Your Message" required
+                                      class="w-full p-3 rounded-md bg-white bg-opacity-10 border border-purple-400 text-white placeholder-gray-300 focus:ring-2 focus:ring-purple-500 neon-glow-input"></textarea>
+                        </div>
+                        <button type="submit"
+                                class="w-full bg-purple-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-purple-800 transition duration-300 neon-glow-button">
+                            Send Message
+                        </button>
+                    </form>
+                    <p id="contactMessage" class="mt-4 text-green-400 font-medium text-center hidden"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Timer Section -->
+        <section class="py-20 px-4 md:px-8 text-center bg-gradient-to-br from-purple-950 to-pink-950 shadow-inner">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-12 drop-shadow-lg">
+                Launching August 14, 2025!
+            </h2>
+            <div id="countdown" class="flex justify-center items-center flex-wrap gap-6 md:gap-8">
+                <!-- Countdown items will be dynamically inserted here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Brief Description of the Brand / What's Coming -->
+        <section id="about" class="py-20 px-4 md:px-8 bg-gray-900 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-8 drop-shadow-lg">
+                    Discover Hadia Perfumes
+                </h2>
+                <p class="text-lg md:text-xl text-gray-300 leading-relaxed mb-8">
+                    Hadia Perfumes is set to redefine luxury fragrances. Inspired by timeless elegance and modern sophistication, our inaugural collection promises unique blends that captivate and enchant. Designed for men and women aged 25-45, our perfumes are more than just scents; they are statements. Be the first to discover the art of fragrance.
+                </p>
+                <p class="text-lg md:text-xl text-gray-300 leading-relaxed">
+                    We are crafting an experience that transcends the ordinary, with meticulously sourced ingredients and unparalleled craftsmanship. Prepare to immerse yourself in a world where every scent tells a story, and every spray is a journey.
+                </p>
+            </div>
+        </section>
+
+        <!-- Highly Stylized Section: More Information -->
+        <section class="py-20 px-4 md:px-8 bg-gradient-to-tl from-purple-900 to-pink-900 relative overflow-hidden">
+            <!-- Decorative shapes -->
+            <div class="absolute top-1/4 left-0 w-48 h-48 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+            <div class="absolute top-1/2 right-0 w-64 h-64 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+            <div class="absolute bottom-1/4 left-1/4 w-56 h-56 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+
+            <div class="relative z-10 max-w-6xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-12 drop-shadow-lg">
+                    Our Vision & Craftsmanship
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Feature 1 -->
+                    <div class="glass-effect p-8 flex flex-col items-center transform transition-transform duration-500 hover:scale-105">
+                        <i class="fas fa-gem text-6xl text-purple-400 mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-4">Exquisite Ingredients</h3>
+                        <p class="text-gray-200 leading-relaxed">
+                            We meticulously source the finest raw materials from around the globe, ensuring unparalleled quality and unique olfactory profiles for every fragrance.
+                        </p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="glass-effect p-8 flex flex-col items-center transform transition-transform duration-500 hover:scale-105">
+                        <i class="fas fa-flask text-6xl text-pink-400 mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-4">Artisan Craftsmanship</h3>
+                        <p class="text-gray-200 leading-relaxed">
+                            Each Hadia Perfume is a testament to artisan skill, blended by master perfumers who pour their passion into every bottle, creating true works of art.
+                        </p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="glass-effect p-8 flex flex-col items-center transform transition-transform duration-500 hover:scale-105">
+                        <i class="fas fa-leaf text-6xl text-green-400 mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-4">Sustainable Luxury</h3>
+                        <p class="text-gray-200 leading-relaxed">
+                            Committed to a greener future, we prioritize sustainable practices, from ethical sourcing to eco-friendly packaging, without compromising on luxury.
+                        </p>
+                    </div>
+                    <!-- Feature 4 -->
+                    <div class="glass-effect p-8 flex flex-col items-center transform transition-transform duration-500 hover:scale-105">
+                        <i class="fas fa-award text-6xl text-yellow-400 mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-4">Unforgettable Experiences</h3>
+                        <p class="text-gray-200 leading-relaxed">
+                            More than just a fragrance, Hadia Perfumes offers an unforgettable sensory experience, designed to evoke emotions and create lasting memories.
+                        </p>
+                    </div>
+                    <!-- Feature 5 -->
+                    <div class="glass-effect p-8 flex flex-col items-center transform transition-transform duration-500 hover:scale-105">
+                        <i class="fas fa-heart text-6xl text-red-400 mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-4">Passion & Dedication</h3>
+                        <p class="text-gray-200 leading-relaxed">
+                            Our brand is built on a foundation of passion for perfumery and dedication to delivering exceptional quality and innovative scents.
+                        </p>
+                    </div>
+                    <!-- Feature 6 -->
+                    <div class="glass-effect p-8 flex flex-col items-center transform transition-transform duration-500 hover:scale-105">
+                        <i class="fas fa-lightbulb text-6xl text-blue-400 mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-4">Innovation in Fragrance</h3>
+                        <p class="text-gray-200 leading-relaxed">
+                            We constantly explore new techniques and unique combinations to push the boundaries of traditional perfumery, offering truly distinctive aromas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-950 text-gray-400 py-8 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; <span id="currentYear"></span> Hadia Perfumes. All rights reserved.</p>
+            <p class="mt-2">Stay connected for updates!</p>
+            <div class="flex justify-center space-x-6 mt-4 text-xl">
+                <a href="#" class="hover:text-purple-400 transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-purple-400 transition duration-300"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-purple-400 transition duration-300"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set the current year in the footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Countdown Timer Logic
+        const launchDate = new Date("August 14, 2025 00:00:00").getTime();
+        const countdownElement = document.getElementById('countdown');
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            // Calculate time units
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Update the countdown display
+            countdownElement.innerHTML = `
+                <div class="countdown-item">
+                    ${days < 10 ? '0' + days : days}<span>Days</span>
+                </div>
+                <div class="countdown-item">
+                    ${hours < 10 ? '0' + hours : hours}<span>Hours</span>
+                </div>
+                <div class="countdown-item">
+                    ${minutes < 10 ? '0' + minutes : minutes}<span>Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    ${seconds < 10 ? '0' + seconds : seconds}<span>Seconds</span>
+                </div>
+            `;
+
+            // If the countdown is over
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                countdownElement.innerHTML = `<p class="text-3xl text-green-400 font-bold">We are LIVE!</p>`;
+            }
+        }
+
+        // Update every 1 second
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call to display immediately
+
+        // Form Submission Logic (Client-side only)
+        const newsletterForm = document.getElementById('newsletterForm');
+        const newsletterMessage = document.getElementById('newsletterMessage');
+        const contactForm = document.getElementById('contactForm');
+        const contactMessage = document.getElementById('contactMessage');
+
+        newsletterForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent actual form submission
+            newsletterMessage.textContent = 'Thank you for subscribing! We will notify you soon.';
+            newsletterMessage.classList.remove('hidden');
+            newsletterMessage.classList.add('text-green-400');
+            newsletterForm.reset(); // Clear the form
+            setTimeout(() => {
+                newsletterMessage.classList.add('hidden');
+            }, 5000); // Hide message after 5 seconds
+        });
+
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent actual form submission
+            contactMessage.textContent = 'Your message has been sent! We will get back to you shortly.';
+            contactMessage.classList.remove('hidden');
+            contactMessage.classList.add('text-green-400');
+            contactForm.reset(); // Clear the form
+            setTimeout(() => {
+                contactMessage.classList.add('hidden');
+            }, 5000); // Hide message after 5 seconds
+        });
+
+    </script>
+</body>
+</html>
