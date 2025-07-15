@@ -1,6 +1,8 @@
 # Hadia Perfumes E-commerce Website
 
-![Hadia Perfumes Banner](/images/intro.jpeg)
+🌐 **Live Website**: [https://ranaab173.github.io/hadia-perfumes/](https://ranaab173.github.io/hadia-perfumes/)
+
+![Hadia Perfumes Banner](images/intro.jpeg)
 
 An elegant e-commerce platform for Hadia Perfumes, showcasing premium fragrances with a responsive design.
 
