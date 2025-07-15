@@ -1,6 +1,6 @@
 # Hadia Perfumes E-commerce Website
 
-![Hadia Perfumes Banner](assets/images/banner.jpg)
+![Hadia Perfumes Banner](/images/intro.jpeg)
 
 An elegant e-commerce platform for Hadia Perfumes, showcasing premium fragrances with a responsive design.
 
